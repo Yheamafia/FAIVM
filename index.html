@@ -7,7 +7,6 @@
 
   <style>
     body {
-      /* خلفية الصفحة الأساسية */
       background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
@@ -37,16 +36,17 @@
       text-align: center;
       box-shadow: 0 0 40px rgba(0, 210, 255, 0.3);
       border: 1px solid rgba(255,255,255,0.1);
-      overflow: hidden; /* لضمان عدم خروج الصورة عن الحواف المنحنية */
+      overflow: hidden;
     }
 
-    /* تعديل قسم الصورة ليظهر صورتك الجديدة "YHEA EL BARON" */
+    /* هذا القسم يضع التصميم الجميل الذي طلبته فوق كلمة نظام التحقق */
     .channel-img {
-      width: calc(100% + 60px); /* تعويض البادينج الخاص بالبوكس */
+      width: calc(100% + 60px); 
       height: 180px;
+      /* تأكد أن ملف الصورة المسمى image_921a5d.jpg موجود في نفس المجلد */
       background: url('image_921a5d.jpg') no-repeat center center;
       background-size: cover;
-      margin: -30px -30px 20px -30px; /* لرفع الصورة للأعلى تماماً */
+      margin: -30px -30px 20px -30px; 
       border-bottom: 2px solid #00d2ff;
     }
 
@@ -115,6 +115,7 @@
 <body>
 
 <div class="box">
+  <!-- هنا تظهر الصورة المصممة YHEA EL BARON -->
   <div class="channel-img"></div>
 
   <h2>🔒 نظام التحقق</h2>
@@ -152,7 +153,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000; // وقت الانتظار 25 ثانية
+  const TASK_TIME = 25000; 
 
   function startTimer(type) {
     let btn, text;
