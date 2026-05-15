@@ -32,20 +32,44 @@
       backdrop-filter: blur(15px);
       padding: 30px;
       border-radius: 24px;
-      width: 360px;
+      width: 380px;
       text-align: center;
       box-shadow: 0 0 40px rgba(0, 210, 255, 0.3);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
     }
 
-    .channel-img {
-      width: calc(100% + 60px); 
-      height: 180px;
-      background: url('https://via.placeholder.com/400x180/00d2ff/ffffff?text=YHEA+EL+BARON') no-repeat center center;
-      background-size: cover;
-      margin: -30px -30px 20px -30px; 
+    .channel-header {
+      width: calc(100% + 60px);
+      height: 160px;
+      margin: -30px -30px 20px -30px;
       border-bottom: 2px solid #00d2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071') no-repeat center center;
+      background-size: cover;
+    }
+
+    .channel-header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 0;
+    }
+
+    .channel-header p {
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.6;
+      z-index: 1;
+      text-shadow: 0 2px 15px rgba(0, 210, 255, 0.8);
     }
 
     h2 {
@@ -54,7 +78,7 @@
       color: #00d2ff;
     }
 
-    p {
+    .info-text {
       font-size: 14px;
       color: #cbd5e1;
       margin-bottom: 25px;
@@ -93,6 +117,7 @@
       color: #000;
       margin-top: 20px;
       animation: pulse 2s infinite;
+      text-decoration: none;
     }
 
     @keyframes pulse {
@@ -113,10 +138,12 @@
 <body>
 
 <div class="box">
-  <div class="channel-img"></div>
+  <div class="channel-header">
+    <p>الرجاء إكمال جميع الشروط لفتح موقع تنزيل رابط التحميل</p>
+  </div>
 
   <h2>🔒 نظام التحقق</h2>
-  <p>يرجى إكمال المهام لفتح الرابط</p>
+  <p class="info-text">يرجى إكمال المهام لفتح الرابط</p>
 
   <a href="https://www.youtube.com/@YHEAEBARON?sub_confirmation=1"
      target="_blank" id="subBtn" class="btn sub" onclick="startTimer('sub')">
@@ -137,9 +164,12 @@
     <span id="unlockText">بانتظار التحقق...</span>
   </button>
 
-  <a id="downloadArea" href="https://sendgb.com/rKkV82pfx7y" class="hidden" target="_blank">
-    <button class="btn download">⬇ تحميل الملف الآن</button>
-  </a>
+  <div id="downloadArea" class="hidden">
+    <a href="https://sendgb.com/rKkV82pfx7y"
+       class="btn download" target="_blank">
+      ⬇ تحميل الملف الآن
+    </a>
+  </div>
 
   <div class="footer">
     POWERED BY YHEA GAMING © 2026
@@ -150,7 +180,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000;
+  const TASK_TIME = 18000; // تم ضبطها لـ 18 ثانية كما طلبت
 
   function startTimer(type) {
     let btn, text;
@@ -190,10 +220,8 @@
   function enableUnlock() {
     if (subDone && likeDone && commentDone) {
       const unlockBtn = document.getElementById('unlockBtn');
-
       unlockBtn.disabled = false;
       unlockBtn.classList.add('ready');
-
       document.getElementById('unlockText').innerText = "فتح الرابط الآن";
     }
   }
